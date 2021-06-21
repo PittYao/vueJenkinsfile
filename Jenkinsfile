@@ -7,13 +7,15 @@ pipeline {
         APP_PORT = 7081
 
         credentialsId = '3c624c30-b117-47c8-9e3e-c9551498e3a5'
+        gitUrl = 'http://gitcebon.cebon-company.online:8080/fanyao/vueJenkinsfile.git'
+        gitBranch = 'master'
     }
 
     stages {
         stage('下载代码') {
             steps {
                 echo '****************************** download code start... ******************************'
-                git branch: 'master', credentialsId: '3c624c30-b117-47c8-9e3e-c9551498e3a5', url: 'http://gitcebon.cebon-company.online:8080/fanyao/vueJenkinsfile.git'
+                git branch: '$gitBranch', credentialsId: '$credentialsId', url: '$gitUrl'
             }
         }
 
@@ -39,7 +41,7 @@ pipeline {
         stage('运行容器') {
             steps {
                 echo '****************************** run start... ******************************'
-                sh 'docker run -d -p $APP_PORT:8080 --restart=always --name $NAME $APP'
+                sh 'docker run -d -p $APP_PORT:80 --restart=always --name $NAME $APP'
             }
         }
     }

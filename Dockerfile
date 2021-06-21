@@ -8,5 +8,5 @@ COPY dist/  /usr/share/nginx/html/
 # 用本地配置文件来替换nginx镜像里的默认配置
 COPY nginx/nginx-${PROFILE}.conf /etc/nginx/nginx.conf
 
-EXPOSE 8080
+EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]  
