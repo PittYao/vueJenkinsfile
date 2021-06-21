@@ -13,7 +13,7 @@ pipeline {
         stage('下载代码') {
             steps {
                 echo '****************************** download code start... ******************************'
-                git branch: 'master', credentialsId: '3c624c30-b117-47c8-9e3e-c9551498e3a5', url: 'https://github.com/PittYao/vueJenkinsfile.git'
+                git branch: 'master', credentialsId: '3c624c30-b117-47c8-9e3e-c9551498e3a5', url: 'http://gitcebon.cebon-company.online:8080/fanyao/vueJenkinsfile.git'
             }
         }
 
