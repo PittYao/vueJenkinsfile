@@ -15,7 +15,7 @@ pipeline {
         stage('下载代码') {
             steps {
                 echo '****************************** download code start... ******************************'
-                git branch: '$gitBranch', credentialsId: '$credentialsId', url: '$gitUrl'
+                git branch: '$gitBranch', credentialsId: '$credentialsId', url: '${gitUrl}'
             }
         }
 
