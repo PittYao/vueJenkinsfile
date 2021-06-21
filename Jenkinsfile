@@ -39,7 +39,7 @@ pipeline {
         stage('运行容器') {
             steps {
                 echo '****************************** run start... ******************************'
-                sh 'docker run -d -p $APP_PORT:80 --restart=always --name $NAME $APP'
+                sh 'docker run -d -p $APP_PORT:8080 --restart=always --name $NAME $APP'
             }
         }
     }
