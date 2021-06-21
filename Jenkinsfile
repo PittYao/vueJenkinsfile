@@ -4,10 +4,8 @@ pipeline {
         NAME = 'vuejenkinsfile'
         PROFILE = 'dev'
         APP = 'fanyao666.online/fanyao/vuejenkinsfile:dev'
-        APP_PORT = 7081
 
         credentialsId = '3c624c30-b117-47c8-9e3e-c9551498e3a5'
-        gitBranch = 'master'
     }
 
     stages {
@@ -33,14 +31,14 @@ pipeline {
                 sh 'docker images|grep $NAME|grep dev|awk \'{print $3}\'|xargs -i docker rmi {}'
 
                 echo '****************************** build image... ******************************'
-                sh 'docker build --build-arg PROFILE=$PROFILE -t $APP .'
+                sh 'docker build --build-arg PROFILE=$nginxConfProfile -t $APP .'
             }
         }
 
         stage('运行容器') {
             steps {
                 echo '****************************** run start... ******************************'
-                sh 'docker run -d -p $APP_PORT:80 --restart=always --name $NAME $APP'
+                sh 'docker run -d -p $appPort:80 --restart=always --name $NAME $APP'
             }
         }
     }
