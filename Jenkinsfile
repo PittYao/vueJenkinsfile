@@ -7,7 +7,6 @@ pipeline {
         APP_PORT = 7081
 
         credentialsId = '3c624c30-b117-47c8-9e3e-c9551498e3a5'
-        gitUrl = 'http://gitcebon.cebon-company.online:8080/fanyao/vueJenkinsfile.git'
         gitBranch = 'master'
     }
 
@@ -15,11 +14,11 @@ pipeline {
         stage('下载代码') {
             steps {
                 echo '****************************** download code start... ******************************'
-                git branch: '$gitBranch', credentialsId: '$credentialsId', url: '${gitUrl}'
+                git branch: '$branch', credentialsId: '$credentialsId', url: '$gitUrl'
             }
         }
 
-        stage('vue编译') {
+        stage('vue编译') {  
             steps {
                 echo '****************************** vue start... ******************************'
                 sh 'cnpm install'
