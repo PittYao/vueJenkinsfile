@@ -13,7 +13,7 @@ pipeline {
         stage('下载代码') {
             steps {
                 echo '****************************** download code start... ******************************'
-                git branch: 'dev', credentialsId: '3c624c30-b117-47c8-9e3e-c9551498e3a5', url: 'https://github.com/PittYao/vueJenkinsfile.git'
+                git branch: 'master', credentialsId: '3c624c30-b117-47c8-9e3e-c9551498e3a5', url: 'https://github.com/PittYao/vueJenkinsfile.git'
             }
         }
 
@@ -21,7 +21,7 @@ pipeline {
             steps {
                 echo '****************************** vue start... ******************************'
                 sh 'cnpm install'
-                sh 'cnpm run build:dev'
+                sh 'cnpm run build'
             }
         }
 
