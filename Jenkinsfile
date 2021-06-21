@@ -28,18 +28,18 @@ pipeline {
         stage('构建Docker镜像') {
             steps {
                 echo '****************************** delete container and image... ******************************'
-                sh 'docker ps -a|grep $NAME|awk \'{print $1}\'|xargs -i docker stop {}|xargs -i docker rm {}'
-                sh 'docker images|grep $NAME|grep dev|awk \'{print $3}\'|xargs -i docker rmi {}'
+                sh 'docker ps -a|grep ${NAME}|awk \'{print $1}\'|xargs -i docker stop {}|xargs -i docker rm {}'
+                sh 'docker images|grep ${NAME}|grep dev|awk \'{print $3}\'|xargs -i docker rmi {}'
 
                 echo '****************************** build image... ******************************'
-                sh 'docker build --build-arg PROFILE=$PROFILE -t $APP .'
+                sh 'docker build --build-arg PROFILE=${PROFILE} -t ${APP} .'
             }
         }
 
         stage('运行容器') {
             steps {
                 echo '****************************** run start... ******************************'
-                sh 'docker run -d -p $APP_PORT:80 --restart=always --name $NAME $APP'
+                sh 'docker run -d -p ${APP_PORT}:80 --restart=always --name ${NAME} ${APP}'
             }
         }
     }
