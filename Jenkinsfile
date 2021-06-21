@@ -4,7 +4,6 @@ pipeline {
         NAME = 'vuejenkinsfile'
         PROFILE = 'dev'
         APP = 'fanyao666.online/fanyao/vuejenkinsfile:dev'
-
         credentialsId = '3c624c30-b117-47c8-9e3e-c9551498e3a5'
     }
 
