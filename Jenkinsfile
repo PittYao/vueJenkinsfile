@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        NAME = 'vueJenkinsfile'
+        NAME = 'vuejenkinsfile'
         PROFILE = 'dev'
         APP = 'fanyao666.online/fanyao/vuejenkinsfile:dev'
         APP_PORT = 7081
