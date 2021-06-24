@@ -41,4 +41,15 @@ pipeline {
             }
         }
     }
+
+    post {
+        always {
+            emailext(
+                subject: '构建通知：${PROJECT_NAME} - Build # ${BUILD_NUMBER} -
+                ${BUILD_STATUS}!',
+                body: '${FILE,path="email.html"}',
+                to: 'fanyaoyao12138@163.com'
+            )
+        }
+    }
 }
